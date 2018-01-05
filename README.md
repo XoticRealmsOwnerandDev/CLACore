@@ -8,7 +8,7 @@
 
 ## Features:
 
-- [x] Relased
+- [x] Alway Spawn (You can on or off in config.yml)
  
  ## Need Help?
  
