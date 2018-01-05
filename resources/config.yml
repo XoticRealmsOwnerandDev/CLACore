@@ -1,0 +1,11 @@
+---
+#CLACore plugin for PocketMine-MP
+
+#@Author: CLADevs Team
+
+
+#----------------------------------------# JOIN #----------------------------------------#
+#Teleport you to spawn when you join & login
+#true or false
+Alway-Spawn: true
+...
