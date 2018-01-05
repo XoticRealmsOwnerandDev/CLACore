@@ -1,6 +1,6 @@
 # Phar
 
-# [Download phar here](https://poggit.pmmp.io/ci/CLADevs/CLACore)
+# [Download phar here](https://poggit.pmmp.io/ci/CLADevs/CLACore/~)
 
 ## TODO
 
