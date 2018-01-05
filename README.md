@@ -8,7 +8,8 @@
 
 ## Features:
 
-- [x] Alway Spawn (You can on or off in config.yml)
+- [x] Alway Spawn
+- [x] Rank System
  
  ## Need Help?
  
