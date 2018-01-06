@@ -13,4 +13,15 @@ Alway-Spawn: true
 #Allow Rank in their chat and above head
 #true or false
 Allow-Rank: true
+
+#----------------------------------------# TITLE #----------------------------------------#
+#You can edit title, subtitle in title.yml
+
+#Allow big text in screen when you respawn
+#true or false
+Title-Respawn: true
+
+#Allow big text in screen when you join
+#true or false
+Title-Join: true
 ...
