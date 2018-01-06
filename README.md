@@ -10,6 +10,7 @@
 
 - [x] Alway Spawn
 - [x] Rank System
+- [x] Title
  
  ## Need Help?
  
