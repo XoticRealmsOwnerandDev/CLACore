@@ -17,6 +17,8 @@ class Core extends PluginBase{
 
     public function onEnable(){
         $this->onConfig();
+        $this->getServer()->getCommandMap()->register("hub", new Commands\hub());
+
         $this->onEvent();
         $this->getLogger()->info(C::GREEN."Enabled.");
     }
@@ -31,7 +33,7 @@ class Core extends PluginBase{
         $this->saveResource("rank.yml");
         $this->saveResource("title.yml");
         $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
-    }
+   }
 
     public function onEvent(){
 
