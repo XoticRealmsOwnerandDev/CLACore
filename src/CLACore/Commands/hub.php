@@ -20,7 +20,7 @@ class hub extends Command{
             return true;
         }
                 $sender->sendMessage("§fW§ee§al§cc§bo§dm§fe §bb§aa§ec§ck§7......");
-                $sender->teleport($sender->getlevel()->getSpawnLocation());
+                $sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
             return true;
         }
     }
