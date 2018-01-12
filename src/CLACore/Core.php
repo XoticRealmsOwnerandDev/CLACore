@@ -2,6 +2,8 @@
 
 namespace CLACore;
 
+use Economy\AddMoneyCommand;
+use Economy\TakeMoneyCommand;
 use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
@@ -40,7 +42,8 @@ class Core extends PluginBase{
     public function onEvent(){
 
         if($this->cfg->get("Allow-Rank") == true){
-            $this->getServer()->getPluginManager()->registerEvents(($this->Rank = new Rank($this)), $this);
+            $this->getServer()->getCommandMap()->register("addmoney", new AddMoneyCommand("addmoney", $this));
+            $this->getServer()->getCommandMap()->register("takemoney", new TakeMoneyCommand("takemoney", $this));
         }
         if($this->cfg->get("Allow-Money") == true){
             $this->getServer()->getPluginManager()->registerEvents(($this->Rank = new Rank($this)), $this);
