@@ -15,6 +15,8 @@ use Ranks\Rank;
 
 class Core extends PluginBase{
 
+    public $cfg;
+
     public function onEnable(){
         $this->onConfig();
         $this->getServer()->getCommandMap()->register("hub", new Commands\hub());
@@ -40,7 +42,9 @@ class Core extends PluginBase{
         if($this->cfg->get("Allow-Rank") == true){
             $this->getServer()->getPluginManager()->registerEvents(($this->Rank = new Rank($this)), $this);
         }
-
+        if($this->cfg->get("Allow-Money") == true){
+            $this->getServer()->getPluginManager()->registerEvents(($this->Rank = new Rank($this)), $this);
+        }
         $this->getServer()->getPluginManager()->registerEvents(($this->onRespawnEvent = new onRespawnEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onJoinEvent = new onJoinEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onLoginEvent = new onLoginEvent($this)), $this);
