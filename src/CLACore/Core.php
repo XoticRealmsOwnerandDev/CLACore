@@ -1,8 +1,7 @@
 <?php
 
 namespace CLACore;
-# Economy Commands
-use Commands\Ping;
+#Economy Commands
 use Economy\AddMoneyCommand;
 use Economy\MoneyCommand;
 use Economy\SeeMoneyCommand;
@@ -14,7 +13,8 @@ use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
 use pocketmine\utils\Textformat as C;
-
+#Commands
+use Commands\Ping;
 #Events
 use Events\onRespawnEvent;
 use Events\onJoinEvent;
