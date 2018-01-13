@@ -29,7 +29,8 @@ class Core extends PluginBase{
     public function onEnable(){
         $this->onConfig();
         $this->getServer()->getCommandMap()->register("hub", new Commands\hub());
-        $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
+        $this->getServer()->getCommandMap()->register("ping", new Commands\ping());
+       
 
         $this->onEvent();
         $this->getLogger()->info(C::GREEN."Enabled.");
