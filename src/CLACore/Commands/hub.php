@@ -11,7 +11,7 @@ class hub extends Command{
 	
 	public function __construct(){
         parent::__construct("hub");
-        $this->setDescription("Teleport to Hub");
+        $this->setDescription("Log in your Hub");
         $this->setAliases(["hub"]);
 	}
 	
@@ -21,6 +21,7 @@ class hub extends Command{
         }
                 $sender->sendMessage("§fW§ee§al§cc§bo§dm§fe §bb§aa§ec§ck§7......");
                 $sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
+	        $sender->getInventory()->clearAll();
             return true;
         }
     }
