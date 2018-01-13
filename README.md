@@ -11,6 +11,7 @@
 - [x] Alway Spawn
 - [x] Rank System
 - [x] Title
+- [x] Support Economy
  
  ## Need Help?
  
@@ -19,3 +20,4 @@
  # Developer:
  
  * CLADevs Team - Main Developer.
+ * SuperKali - Made economy.
