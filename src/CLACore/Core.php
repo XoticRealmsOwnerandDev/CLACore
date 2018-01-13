@@ -22,6 +22,7 @@ use Ranks\Rank;
 class Core extends PluginBase{
 
     public $cfg;
+    public $money;
 
     public function onEnable(){
         $this->onConfig();
@@ -42,7 +43,7 @@ class Core extends PluginBase{
         $this->saveResource("title.yml");
         $this->saveResource("money.yml");
         $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
-        $this->cfg = new Config($this->getDataFolder() . "money.yml", Config::YAML);
+        $this->money = new Config($this->getDataFolder() . "money.yml", Config::YAML);
    }
 
     public function onEvent(){
