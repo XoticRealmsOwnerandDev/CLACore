@@ -1,12 +1,6 @@
 <?php
 
 namespace CLACore;
-#Economy Commands
-use Economy\AddMoneyCommand;
-use Economy\MoneyCommand;
-use Economy\SeeMoneyCommand;
-use Economy\SetMoneyCommand;
-use Economy\TakeMoneyCommand;
 
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -27,13 +21,11 @@ use Ranks\Rank;
 class Core extends PluginBase{
 
     public $cfg;
-    public $money;
 
     public function onEnable(){
         $this->onConfig();
         $this->onEvent();
         $this->onCommands();
-
         $this->getLogger()->info(C::GREEN."Enabled.");
     }
 
@@ -46,20 +38,10 @@ class Core extends PluginBase{
         $this->saveResource("config.yml");
         $this->saveResource("rank.yml");
         $this->saveResource("title.yml");
-        $this->saveResource("money.yml");
         $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
-        $this->money = new Config($this->getDataFolder() . "money.yml", Config::YAML);
    }
 
     public function onEvent(){
-
-        if($this->cfg->get("Allow-Money") == true){
-            $this->getServer()->getCommandMap()->register("addmoney", new AddMoneyCommand("addmoney", $this));
-            $this->getServer()->getCommandMap()->register("takemoney", new TakeMoneyCommand("takemoney", $this));
-            $this->getServer()->getCommandMap()->register("setmoney", new SetMoneyCommand("setmoney", $this));
-            $this->getServer()->getCommandMap()->register("seemoney", new SeeMoneyCommand("seemoney", $this));
-            $this->getServer()->getCommandMap()->register("money", new MoneyCommand("money", $this));
-        }
         if($this->cfg->get("Allow-Rank") == true){
             $this->getServer()->getPluginManager()->registerEvents(($this->Rank = new Rank($this)), $this);
         }
@@ -69,47 +51,7 @@ class Core extends PluginBase{
     }
 
     private function onCommands(){
-		$this->getServer()->getCommandMap()->register("hub", new hub("hub", $this));
+	$this->getServer()->getCommandMap()->register("hub", new hub("hub", $this));
         $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
-    }
-
-    public function myMoney($player)
-    {
-        if ($player instanceof Player) {
-            $player = $player->getName();
-        }
-        $player = strtolower($player);
-        $moneyconf = new Config($this->getDataFolder() . "money.yml", Config::YAML);
-        $moneyconf->get($player);
-        return $moneyconf->get($player);
-    }
-
-    public function reduceMoney($player, $money)
-    {
-        if ($player instanceof Player) {
-            $player->getName();
-        }
-        if ($this->myMoney($player) - $money < 0) {
-            return true;
-        }
-        $player = strtolower($player);
-        $moneyconf = new Config($this->getDataFolder() . "money.yml", Config::YAML);
-        $moneyconf->set($player, (int)$moneyconf->get($player) - $money);
-        $moneyconf->save();
-        return true;
-    }
-    public function addMoney($player, $money)
-    {
-        if ($player instanceof Player) {
-            $player->getName();
-        }
-        if ($this->myMoney($player) + $money < 0) {
-            return true;
-        }
-        $player = strtolower($player);
-        $moneyconf = new Config($this->getDataFolder() . "money.yml", Config::YAML);
-        $moneyconf->set($player, (int)$moneyconf->get($player) + $money);
-        $moneyconf->save();
-        return true;
     }
 }
