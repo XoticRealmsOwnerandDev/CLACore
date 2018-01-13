@@ -12,6 +12,7 @@
 - [x] Rank System
 - [x] Title
 - [x] Support Economy
+- [x] Commands
  
  ## Need Help?
  
