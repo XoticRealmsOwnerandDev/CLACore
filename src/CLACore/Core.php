@@ -2,6 +2,10 @@
 
 namespace CLACore;
 
+use Economy\AddMoneyCommand;
+use Economy\SeeMoneyCommand;
+use Economy\SetMoneyCommand;
+use Economy\TakeMoneyCommand;
 use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
@@ -14,6 +18,8 @@ use Events\onLoginEvent;
 use Ranks\Rank;
 
 class Core extends PluginBase{
+
+    public $cfg;
 
     public function onEnable(){
         $this->onConfig();
@@ -38,9 +44,14 @@ class Core extends PluginBase{
     public function onEvent(){
 
         if($this->cfg->get("Allow-Rank") == true){
+            $this->getServer()->getCommandMap()->register("addmoney", new AddMoneyCommand("addmoney", $this));
+            $this->getServer()->getCommandMap()->register("takemoney", new TakeMoneyCommand("takemoney", $this));
+            $this->getServer()->getCommandMap()->register("setmoney", new SetMoneyCommand("setmoney", $this));
+            $this->getServer()->getCommandMap()->register("seemoney", new SeeMoneyCommand("seemoney", $this));
+        }
+        if($this->cfg->get("Allow-Money") == true){
             $this->getServer()->getPluginManager()->registerEvents(($this->Rank = new Rank($this)), $this);
         }
-
         $this->getServer()->getPluginManager()->registerEvents(($this->onRespawnEvent = new onRespawnEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onJoinEvent = new onJoinEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onLoginEvent = new onLoginEvent($this)), $this);
