@@ -13,8 +13,11 @@ use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
 use pocketmine\utils\Textformat as C;
+
 #Commands
-use Commands\Ping;
+use CLACore\Commands\Ping;
+use CLACore\Commands\hub;
+
 #Events
 use Events\onRespawnEvent;
 use Events\onJoinEvent;
@@ -28,12 +31,9 @@ class Core extends PluginBase{
 
     public function onEnable(){
         $this->onConfig();
-        $this->getServer()->getCommandMap()->register("hub", new Commands\hub());
-        $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
-
-       
-
         $this->onEvent();
+        $this->onCommands();
+
         $this->getLogger()->info(C::GREEN."Enabled.");
     }
 
@@ -67,6 +67,12 @@ class Core extends PluginBase{
         $this->getServer()->getPluginManager()->registerEvents(($this->onJoinEvent = new onJoinEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onLoginEvent = new onLoginEvent($this)), $this);
     }
+
+    private function onCommands(){
+		$this->getServer()->getCommandMap()->register("hub", new hub("hub", $this));
+        $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
+    }
+
     public function myMoney($player)
     {
         if ($player instanceof Player) {
