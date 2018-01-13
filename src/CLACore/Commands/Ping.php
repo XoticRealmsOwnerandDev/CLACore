@@ -1,5 +1,5 @@
 <?php
-namespace Commands;
+namespace CLACore\Commands;
 
 use CLACore\Core;
 use pocketmine\command\CommandSender;
