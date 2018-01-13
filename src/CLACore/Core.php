@@ -29,7 +29,7 @@ class Core extends PluginBase{
     public function onEnable(){
         $this->onConfig();
         $this->getServer()->getCommandMap()->register("hub", new Commands\hub());
-        $this->getServer()->getCommandMap()->register("ping", new Commands\ping());
+        $this->getServer()->getCommandMap()->register("ping", new Commands\Ping());
        
 
         $this->onEvent();
