@@ -1,12 +1,14 @@
 <?php
 
 namespace CLACore;
-
+# Economy Commands
+use Commands\Ping;
 use Economy\AddMoneyCommand;
 use Economy\MoneyCommand;
 use Economy\SeeMoneyCommand;
 use Economy\SetMoneyCommand;
 use Economy\TakeMoneyCommand;
+
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 
@@ -27,6 +29,7 @@ class Core extends PluginBase{
     public function onEnable(){
         $this->onConfig();
         $this->getServer()->getCommandMap()->register("hub", new Commands\hub());
+        $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
 
         $this->onEvent();
         $this->getLogger()->info(C::GREEN."Enabled.");
