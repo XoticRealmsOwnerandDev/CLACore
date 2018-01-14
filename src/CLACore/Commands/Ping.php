@@ -30,8 +30,10 @@ class Ping extends PluginCommand
             $color = TextFormat::GREEN;
             if($ping >= 150 and $ping <= 250){
                 $color = TextFormat::GOLD;
-            }elseif($ping > 250){
+            }elseif($ping >= 250 and $ping <= 350){
                 $color = TextFormat::RED;
+            }elseif($ping > 350){
+                $color = TextFormat::DARK_RED;   
             }
             $sender->sendMessage($this->prefix . TF::GRAY . " Your ping is " . $color . $ping . "ms");
             return true;
