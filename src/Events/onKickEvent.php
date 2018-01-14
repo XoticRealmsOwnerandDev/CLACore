@@ -17,9 +17,5 @@ class onKickEvent implements Listener{
 
     public function onKick(PlayerKickEvent $e){
         $p = $e->getPlayer();
-        $ping = $p->getPing();
-        if($ping > 400){
-            $p->kick(C::RED . "You have been removed from the game because you have a high ping");
-        }
     }
 }

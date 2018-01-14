@@ -2,6 +2,7 @@
 
 namespace CLACore;
 
+use Tasks\HighPingCheckTask;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 
@@ -26,6 +27,7 @@ class Core extends PluginBase{
         $this->onConfig();
         $this->onEvent();
         $this->onCommands();
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new HighPingCheckTask($this), 100); //5 Sek.
         $this->getLogger()->info(C::GREEN."Enabled.");
     }
 
