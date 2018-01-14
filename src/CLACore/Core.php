@@ -11,7 +11,7 @@ use pocketmine\utils\Textformat as C;
 
 #Commands
 use CLACore\Commands\Ping;
-use CLACore\Commands\hub;
+use CLACore\Commands\Hub;
 
 #Events
 use Events\onRespawnEvent;
@@ -53,7 +53,7 @@ class Core extends PluginBase{
     }
 
     private function onCommands(){
-	$this->getServer()->getCommandMap()->register("hub", new hub("hub", $this));
+        $this->getServer()->getCommandMap()->register("hub", new Hub("hub", $this));
         $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
     }
 }
