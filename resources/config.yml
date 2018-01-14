@@ -14,6 +14,11 @@ Alway-Spawn: true
 #true or false
 Allow-Rank: true
 
+#----------------------------------------# MONEY SYSTEM #---------------------------------#
+#allow you to use a personalized economy of money
+#true or false
+Allow-Money: true
+
 #----------------------------------------# TITLE #----------------------------------------#
 #You can edit title, subtitle in title.yml
 

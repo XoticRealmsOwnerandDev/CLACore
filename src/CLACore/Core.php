@@ -13,6 +13,13 @@ use pocketmine\utils\Textformat as C;
 use CLACore\Commands\Ping;
 use CLACore\Commands\Hub;
 
+#Economy Command
+use CLACore\Economy\AddMoneyCommand;
+use CLACore\Economy\MoneyCommand;
+use CLACore\Economy\SeeMoneyCommand;
+use CLACore\Economy\SetMoneyCommand;
+use CLACore\Economy\TakeMoneyCommand;
+
 #Events
 use Events\onRespawnEvent;
 use Events\onJoinEvent;
@@ -22,11 +29,13 @@ use Ranks\Rank;
 class Core extends PluginBase{
 
     public $cfg;
+    public $money;
 
     public function onEnable(){
         $this->onConfig();
         $this->onEvent();
         $this->onCommands();
+        $this->onEconomy();
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new HighPingCheckTask($this), 100); //5 Sek.
         $this->getLogger()->info(C::GREEN."Enabled.");
     }
@@ -40,6 +49,8 @@ class Core extends PluginBase{
         $this->saveResource("config.yml");
         $this->saveResource("rank.yml");
         $this->saveResource("title.yml");
+        $this->saveResource("money.yml");
+        $this->money = new Config($this->getDataFolder() . "money.yml", Config::YAML);
         $this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
    }
 
@@ -55,5 +66,53 @@ class Core extends PluginBase{
     private function onCommands(){
         $this->getServer()->getCommandMap()->register("hub", new Hub("hub", $this));
         $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
+    }
+    private function onEconomy(){
+        if($this->cfg->get("Allow-Money") == true){
+            $this->getServer()->getCommandMap()->register("addmoney", new AddMoneyCommand("addmoney", $this));
+            $this->getServer()->getCommandMap()->register("takemoney", new TakeMoneyCommand("takemoney", $this));
+            $this->getServer()->getCommandMap()->register("setmoney", new SetMoneyCommand("setmoney", $this));
+            $this->getServer()->getCommandMap()->register("seemoney", new SeeMoneyCommand("seemoney", $this));
+            $this->getServer()->getCommandMap()->register("money", new MoneyCommand("money", $this));
+        }
+    }
+    public function myMoney($player)
+    {
+        if ($player instanceof Player) {
+            $player = $player->getName();
+        }
+        $player = strtolower($player);
+        $moneyconf = new Config($this->getDataFolder() . "money.yml", Config::YAML);
+        $moneyconf->get($player);
+        return $moneyconf->get($player);
+    }
+
+    public function reduceMoney($player, $money)
+    {
+        if ($player instanceof Player) {
+            $player->getName();
+        }
+        if ($this->myMoney($player) - $money < 0) {
+            return true;
+        }
+        $player = strtolower($player);
+        $moneyconf = new Config($this->getDataFolder() . "money.yml", Config::YAML);
+        $moneyconf->set($player, (int)$moneyconf->get($player) - $money);
+        $moneyconf->save();
+        return true;
+    }
+    public function addMoney($player, $money)
+    {
+        if ($player instanceof Player) {
+            $player->getName();
+        }
+        if ($this->myMoney($player) + $money < 0) {
+            return true;
+        }
+        $player = strtolower($player);
+        $moneyconf = new Config($this->getDataFolder() . "money.yml", Config::YAML);
+        $moneyconf->set($player, (int)$moneyconf->get($player) + $money);
+        $moneyconf->save();
+        return true;
     }
 }
