@@ -23,7 +23,7 @@ class hub extends PluginCommand{
     public function __construct($name, Core $plugin){
         parent::__construct($name, $plugin);
         $this->setDescription("Teleport to hub.");
-        $this->setAliases(["Hub", "spawn"]);
+        $this->setAliases(["Hub"]);
     }
      
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool{
