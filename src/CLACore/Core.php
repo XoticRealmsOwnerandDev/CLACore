@@ -2,7 +2,7 @@
 
 namespace CLACore;
 
-use Events\onExhaustEvent;
+
 use Tasks\HighPingCheckTask;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -26,6 +26,8 @@ use Economy\TakeMoneyCommand;
 use Events\onRespawnEvent;
 use Events\onJoinEvent;
 use Events\onLoginEvent;
+use Events\onExhaustEvent;
+use Events\onMoveEvent;
 
 use Ranks\Rank;
 
@@ -65,6 +67,7 @@ class Core extends PluginBase{
         $this->getServer()->getPluginManager()->registerEvents(($this->onJoinEvent = new onJoinEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onLoginEvent = new onLoginEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onExhaustEvent = new onExhaustEvent($this)), $this);
+        $this->getServer()->getPluginManager()->registerEvents(($this->onMoveEvent = new onMoveEvent($this)), $this);
     }
 
     private function onCommands(){

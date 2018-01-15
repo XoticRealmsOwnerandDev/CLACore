@@ -32,4 +32,10 @@ Title-Join: true
 #Disable Hunger Changing
 #So players can always sprint :D
 Disable-HungerChange: true
+#----------------------------------------# NO VOID #----------------------------------------#
+#You can edit this here for allow no void on world
+#Allow no void on world empty
+Allow-NoVoid: true
+#Name world to allow the no void system
+No-Void-World: "hub"
 ...
