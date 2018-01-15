@@ -7,7 +7,7 @@
 #----------------------------------------# JOIN #----------------------------------------#
 #Teleport you to spawn when you join & login
 #true or false
-Alway-Spawn: true
+Always-Spawn: true
 
 #----------------------------------------# RANK #----------------------------------------#
 #Allow Rank in their chat and above head
