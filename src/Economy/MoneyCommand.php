@@ -1,6 +1,6 @@
 <?php
 
-namespace CLACore\Economy;
+namespace Economy;
 
 use CLACore\Core;
 use pocketmine\command\CommandSender;

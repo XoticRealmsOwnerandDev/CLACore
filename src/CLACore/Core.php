@@ -2,7 +2,6 @@
 
 namespace CLACore;
 
-use CLACore\Commands\Fly;
 use Tasks\HighPingCheckTask;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -13,18 +12,20 @@ use pocketmine\utils\Textformat as C;
 #Commands
 use CLACore\Commands\Ping;
 use CLACore\Commands\Hub;
+use CLACore\Commands\Fly;
 
 #Economy Command
-use CLACore\Economy\AddMoneyCommand;
-use CLACore\Economy\MoneyCommand;
-use CLACore\Economy\SeeMoneyCommand;
-use CLACore\Economy\SetMoneyCommand;
-use CLACore\Economy\TakeMoneyCommand;
+use Economy\AddMoneyCommand;
+use Economy\MoneyCommand;
+use Economy\SeeMoneyCommand;
+use Economy\SetMoneyCommand;
+use Economy\TakeMoneyCommand;
 
 #Events
 use Events\onRespawnEvent;
 use Events\onJoinEvent;
 use Events\onLoginEvent;
+
 use Ranks\Rank;
 
 class Core extends PluginBase{

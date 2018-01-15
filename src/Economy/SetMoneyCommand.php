@@ -1,5 +1,6 @@
 <?php
-namespace CLACore\Economy;
+
+namespace Economy;
 
 use CLACore\Core;
 
