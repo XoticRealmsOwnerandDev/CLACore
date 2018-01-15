@@ -2,9 +2,6 @@
 
 namespace Events;
 
-use pocketmine\Player;
-use pocketmine\Server;
-
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerLoginEvent;
 

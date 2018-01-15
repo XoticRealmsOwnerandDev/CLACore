@@ -69,6 +69,7 @@ class Core extends PluginBase{
         $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
         $this->getServer()->getCommandMap()->register("fly", new Fly("fly", $this));
     }
+
     private function onEconomy(){
         if($this->cfg->get("Allow-Money") == true){
             $this->getServer()->getCommandMap()->register("addmoney", new AddMoneyCommand("addmoney", $this));
@@ -78,8 +79,8 @@ class Core extends PluginBase{
             $this->getServer()->getCommandMap()->register("money", new MoneyCommand("money", $this));
         }
     }
-    public function myMoney($player)
-    {
+
+    public function myMoney($player){
         if ($player instanceof Player) {
             $player = $player->getName();
         }
@@ -89,8 +90,7 @@ class Core extends PluginBase{
         return $moneyconf->get($player);
     }
 
-    public function reduceMoney($player, $money)
-    {
+    public function reduceMoney($player, $money){
         if ($player instanceof Player) {
             $player->getName();
         }
@@ -103,8 +103,8 @@ class Core extends PluginBase{
         $moneyconf->save();
         return true;
     }
-    public function addMoney($player, $money)
-    {
+
+    public function addMoney($player, $money){
         if ($player instanceof Player) {
             $player->getName();
         }

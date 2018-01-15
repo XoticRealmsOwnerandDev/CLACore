@@ -3,12 +3,10 @@
 namespace CLACore\Commands;
 
 use pocketmine\Player;
-use pocketmine\Server;
 
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 
-use pocketmine\level\Level;
 use pocketmine\level\sound\EndermanTeleportSound;
 
 use pocketmine\math\Vector3;
@@ -17,12 +15,11 @@ use pocketmine\utils\TextFormat as C;
 
 use CLACore\Core;
 
-class hub extends PluginCommand{
+class Hub extends PluginCommand{
 
     public function __construct($name, Core $plugin){
-        parent::__construct($name, $plugin);
         $this->setDescription("Teleport to Hub.");
-        $this->setAliases(["Hub"]);
+        parent::__construct($name, $plugin);
     }
      
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool{

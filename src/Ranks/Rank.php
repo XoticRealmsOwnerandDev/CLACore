@@ -3,7 +3,6 @@
 namespace Ranks;
 
 use pocketmine\Player;
-use pocketmine\Server;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerLoginEvent;
@@ -38,7 +37,7 @@ class Rank implements Listener{
         $this->setRank($player);
     }
 
-    public function setRank($player){
+    public function setRank(Player $player){
         $name = $player->getName();
         $rankcfg = new Config($this->core->getDataFolder() . "rank.yml", Config::YAML);
         $rank = $rankcfg->get($name);

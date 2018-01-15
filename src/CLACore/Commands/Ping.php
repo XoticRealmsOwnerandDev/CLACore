@@ -3,19 +3,22 @@
 namespace CLACore\Commands;
 
 use CLACore\Core;
+
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
+
 use pocketmine\Player;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\utils\TextFormat;
 
 class Ping extends PluginCommand {
+
     private $prefix =  TextFormat::BOLD . TextFormat::GREEN . "Ping" . TextFormat::RESET;
 
     public function __construct($name, Core $main){
-        parent::__construct($name, $main);
         $this->main = $main;
         $this->setDescription("/ping to view the latency from the server to your home");
+        parent::__construct($name, $main);
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args){

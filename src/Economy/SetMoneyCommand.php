@@ -2,28 +2,27 @@
 namespace CLACore\Economy;
 
 use CLACore\Core;
+
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
+
 use pocketmine\Player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as TF;
 
-class SetMoneyCommand extends PluginCommand
-{
+class SetMoneyCommand extends PluginCommand {
+
     private $main;
     public $prefix = TF::BOLD . TF::RED . "Money " . TF::RESET;
 
-    public function __construct($name, Core $main)
-    {
-        parent::__construct($name, $main);
+    public function __construct($name, Core $main){
         $this->main = $main;
         $this->setDescription("/setmoney for setting at player the money");
         $this->setPermission("core.economy.set");
-
+        parent::__construct($name, $main);
     }
 
-    public function execute(CommandSender $sender, $commandLabel, array $args)
-    {
+    public function execute(CommandSender $sender, string $commandLabel, array $args){
         if(!$sender instanceof Player) {
             $sender->sendMessage(TF::BOLD . TF::DARK_GRAY . "(" . TF::RED . "!" . TF::DARK_GRAY . ") " . TF::RESET . TF::GRAY . "You must run this command in-game.");
         }

@@ -2,11 +2,6 @@
 
 namespace Events;
 
-use pocketmine\Player;
-use pocketmine\Server;
-
-use pocketmine\utils\Config;
-
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 
@@ -14,7 +9,7 @@ use Tasks\TitleTask;
 
 use CLACore\Core;
 
-class onJoinEvent implements Listener{
+class onJoinEvent implements Listener {
 
     private $core;
     
@@ -26,6 +21,6 @@ class onJoinEvent implements Listener{
         $player = $e->getPlayer();
         $name = $player->getName();
         $core = $this->core;
-        $core->getServer()->getScheduler()->scheduleDelayedTask(new TitleTask($core, $player), 30);
+        $core->getServer()->getScheduler()->scheduleDelayedTask(new TitleTask($core, $player), 50); //2.5 Sek.
     }
 }
