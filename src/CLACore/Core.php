@@ -2,6 +2,7 @@
 
 namespace CLACore;
 
+use CLACore\Commands\Fly;
 use Tasks\HighPingCheckTask;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -66,6 +67,7 @@ class Core extends PluginBase{
     private function onCommands(){
         $this->getServer()->getCommandMap()->register("hub", new Hub("hub", $this));
         $this->getServer()->getCommandMap()->register("ping", new Ping("ping", $this));
+        $this->getServer()->getCommandMap()->register("fly", new Fly("fly", $this));
     }
     private function onEconomy(){
         if($this->cfg->get("Allow-Money") == true){
