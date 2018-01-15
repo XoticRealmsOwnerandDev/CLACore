@@ -2,6 +2,7 @@
 
 namespace CLACore;
 
+use Events\onExhaustEvent;
 use Tasks\HighPingCheckTask;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -63,6 +64,7 @@ class Core extends PluginBase{
         $this->getServer()->getPluginManager()->registerEvents(($this->onRespawnEvent = new onRespawnEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onJoinEvent = new onJoinEvent($this)), $this);
         $this->getServer()->getPluginManager()->registerEvents(($this->onLoginEvent = new onLoginEvent($this)), $this);
+        $this->getServer()->getPluginManager()->registerEvents(($this->onExhaustEvent = new onExhaustEvent($this)), $this);
     }
 
     private function onCommands(){
