@@ -3,7 +3,6 @@
 
 #@Author: CLADevs Team
 
-
 #----------------------------------------# JOIN #----------------------------------------#
 #Teleport you to spawn when you join & login
 #true or false
@@ -29,4 +28,8 @@ Title-Respawn: true
 #Allow big text in screen when you join
 #true or false
 Title-Join: true
+
+#Disable Hunger Changing
+#So players can always sprint :D
+Disable-HungerChange: true
 ...
