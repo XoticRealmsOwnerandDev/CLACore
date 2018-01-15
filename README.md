@@ -8,7 +8,7 @@
 
 ## Features:
 
-- [x] Alway Spawn
+- [x] Always Spawn
 - [x] Rank System
 - [x] Title
 - [x] Commands
