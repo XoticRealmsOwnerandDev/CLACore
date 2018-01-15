@@ -40,12 +40,13 @@ class Fly extends PluginCommand {
                 if ($this->isPlayer($sender)) {
                     $this->removePlayer($sender);
                     $sender->setAllowFlight(false);
-                    $sender->sendMessage(TF::RED . "The flying has been disabled");
+                    $sender->setFlying(false);
+                    $sender->sendMessage(TF::RED . "Fly has been disabled");
                     return true;
                 } else {
                     $this->addPlayer($sender);
                     $sender->setAllowFlight(true);
-                    $sender->sendMessage(TF::GREEN . "the flying has been enabled");
+                    $sender->sendMessage(TF::GREEN . "Fly has been enabled");
                     return true;
                 }
             }
