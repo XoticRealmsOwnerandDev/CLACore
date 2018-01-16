@@ -27,13 +27,13 @@ class onJoinEvent implements Listener {
         $player = $e->getPlayer();
         $name = $player->getName();
         $core = $this->core;
-        $config = new Config($this->core->getDataFolder()."config.yml", Config::YAML);
+        /*$config = new Config($core->getDataFolder()."config.yml", Config::YAML);
         foreach ($config->get("Allowed-Devices") as $os){
             if ($os == $player->getDeviceOS()){
             }else{
                 $player->kick(C::YELLOW.$this->getOS($player).C::RED." is here not allowed!", false);
             }
-        }
+        }*/
         if ($player->spawned){
             $core->getServer()->getScheduler()->scheduleDelayedTask(new TitleTask($core, $player), 50); //2.5 Sek.
         }

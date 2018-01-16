@@ -1,5 +1,5 @@
 ---
-#CLACore plugin for PocketMine-MP
+#CLACore plugin for PocketMine-MP and forks
 
 #@Author: CLADevs Team
 
@@ -48,8 +48,8 @@ Max-Ping: 500
 #---------------------------------------# DEVICE BLOCKING #----------------------------------#
 #Device List:
 #Android = 1, IOS = 2, Windows = 7
-Allowed-Devices:
-- 1
-- 2
-- 7
+#Allowed-Devices:
+#- 1
+#- 2
+#- 7
 ...
