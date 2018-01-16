@@ -30,7 +30,9 @@ class TitleTask extends PluginTask{
         $subtitle = $titlecfg->get("Title-Join-subtitle");
         $subtitle = str_replace("{name}", $name, $subtitle);
         if($core->cfg->get("Title-Join") == true){
-            $player->addTitle($title, $subtitle);
+            if ($player->isOnline()){
+                $player->addTitle($title, $subtitle);
+            }
         }
     }
 }

@@ -41,7 +41,10 @@ class Core extends PluginBase{
         $this->onEvent();
         $this->onCommands();
         $this->onEconomy();
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new HighPingCheckTask($this), 100); //5 Sek.
+        $config = new Config($this->getDataFolder()."config.yml", Config::YAML);
+        if ($config->get("Enable-HighPingKick") == true){
+            $this->getServer()->getScheduler()->scheduleRepeatingTask(new HighPingCheckTask($this), 100); //5 Sek.
+        }
         $this->getLogger()->info(C::GREEN."Enabled.");
     }
 
